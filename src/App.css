@@ -1,0 +1,66 @@
+/* === Ana kapsayıcı === */
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+/* === Grid Panel (başlangıçta tüm ekranı kaplar) === */
+.fullscreen-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1.5rem;
+  padding: 3rem;
+  box-sizing: border-box;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+  transition: all 0.5s ease;
+  overflow-y: auto;
+}
+
+/* === Butona tıklandıktan sonra sola yaslanmış görünüm === */
+.fullscreen-grid.minimized {
+  width: 20%;
+  grid-template-columns: 1fr;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+/* === Butonlar === */
+.grid-button {
+  font-size: 1.3rem;
+  color: white;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid var(--btn-color, white);
+  border-radius: 14px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+.grid-button:hover {
+  background: var(--btn-color);
+  color: black;
+  transform: scale(1.05);
+}
+
+/* === Mobil uyum === */
+@media (max-width: 600px) {
+  .fullscreen-grid.minimized {
+    width: 40%; /* mobilde %20 çok dar kalır */
+  }
+
+  .grid-button {
+    font-size: 1.1rem;
+    padding: 1.2rem;
+  }
+}
